@@ -32,3 +32,6 @@ When the player misses two ducks in a row, the InvertAimCommand is passed into t
 As of now, whenever the player presses Left mouse button to attack it will invert the controls if the raycast returns nothing.
 
 
+As Command has the ability to rebind controls and undo actions, there's also a chance that Command can be implemented to keep track of all the actions that happen in the game and store them as a replay function.
+
+
