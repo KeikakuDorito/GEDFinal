@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
         inputAction.InvertedPlayer.Disable();
 
         // Space to jump
-        //inputAction.Player.Jump.performed += cntxt => Jump();
+        inputAction.Player.Jump.performed += cntxt => ObjectPooler.instance.SpawnFromPool("Duck", new Vector3(0, 1.7f, -8f),  new Quaternion(0,0,0,0));
 
         // WASD to move
         inputAction.Player.Move.performed += cntxt => move = cntxt.ReadValue<Vector2>();

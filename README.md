@@ -6,10 +6,17 @@ Nathan Woo 100787454
 
 The Starter code from the TA was used.
 
-
+Space - Spawn New Enemy (Object Pooling)
+LMB - Invert controls (Command)
 
 ## Object Pooling
-Object Pooling instantiates a pool of objects on Scene Load, then disables them for later use. Whenever a new object needs to be created, an Object will be enabled and moved to the specifed location.
+ObjectPooling is a singleton class.
+
+Object Pooling instantiates a pool of objects on Scene Load, then disables them for later use. 
+
+Whenever a new object needs to be created, the SpawnFromPool function is called and an Object will be enabled and moved to the specifed location.
+
+Pressing space spawns a new enemy.
 
 
 ## Command

@@ -880,6 +880,7 @@ GameObject:
   - component: {fileID: 467325946}
   - component: {fileID: 467325947}
   - component: {fileID: 467325948}
+  - component: {fileID: 467325949}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -926,6 +927,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7736e3f0256cab4ba06e5aa08f35fbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &467325949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467325945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1751287a375e0564aaf6f4f0d65d8f1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - tag: Duck
+    prefab: {fileID: 547796367}
+    size: 10
 --- !u!1 &493025018 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 30011492a38474341a0c39bf518ad2be, type: 3}
