@@ -35,3 +35,12 @@ As of now, whenever the player presses Left mouse button to attack it will inver
 As Command has the ability to rebind controls and undo actions, there's also a chance that Command can be implemented to keep track of all the actions that happen in the game and store them as a replay function.
 
 
+
+
+## ScoreManager
+
+(Unable to fully implement, not enough time)
+
+ScoreManager is a singleton instance that contains the Score Value. There are seperate methods that allow the modification of the score within the ScoreManager Class.
+The score can be accessed by other classes by using ScoreManager.instance.ChangeScore()
+
