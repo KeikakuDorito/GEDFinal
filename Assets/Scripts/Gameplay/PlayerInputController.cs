@@ -17,6 +17,12 @@ public class PlayerInputController : MonoBehaviour
         inputAction.Disable();
     }
 
+    public void InvertControls()
+    {
+        inputAction.Player.Disable();
+        inputAction.InvertedPlayer.Enable();
+    }
+
     // Start is called before the first frame update
     void Awake()
     {

@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    Invoker Invoker = new Invoker();
+    ICommand newCommand;
+
     // Player controller variables
     GameControls inputAction;
     Vector2 move;
@@ -32,8 +35,10 @@ public class PlayerController : MonoBehaviour
         // Input action for player movement
         inputAction = PlayerInputController.controller.inputAction;
 
+        inputAction.InvertedPlayer.Disable();
+
         // Space to jump
-        inputAction.Player.Jump.performed += cntxt => Jump();
+        //inputAction.Player.Jump.performed += cntxt => Jump();
 
         // WASD to move
         inputAction.Player.Move.performed += cntxt => move = cntxt.ReadValue<Vector2>();
@@ -42,6 +47,8 @@ public class PlayerController : MonoBehaviour
         // Use mouse to look around
         inputAction.Player.Look.performed += cntxt => rotate = cntxt.ReadValue<Vector2>();
         inputAction.Player.Look.canceled += cntxt => rotate = Vector2.zero;
+        inputAction.InvertedPlayer.Look.performed += cntxt => rotate = cntxt.ReadValue<Vector2>();
+        inputAction.InvertedPlayer.Look.canceled += cntxt => rotate = Vector2.zero;
 
         // LMB to attack
         inputAction.Player.Attack.performed += cntxt => Attack(); 
@@ -59,24 +66,39 @@ public class PlayerController : MonoBehaviour
         cameraRotation = new Vector3(transform.rotation.x, transform.rotation.y, transform.rotation.z);       
     }
 
-    private void Jump()
-    {
-        // If player is on the ground, player can jump
-        if(isGrounded)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jump);
-            isGrounded = false;
-        }
-    }
+    //private void Jump()
+    //{
+    //    // If player is on the ground, player can jump
+    //    if(isGrounded)
+    //    {
+    //        rb.velocity = new Vector2(rb.velocity.x, jump);
+    //        isGrounded = false;
+    //    }
+    //}
+
+    //private void Attack()
+    //{
+    //    // If player is not attacking, player can initialize the attack
+    //    if(!isAttacking)
+    //    {
+    //        animator.SetTrigger("isAttacking");
+    //        StartCoroutine(InitialiseAttack());
+    //    }
+    //}
 
     private void Attack()
     {
-        // If player is not attacking, player can initialize the attack
-        if(!isAttacking)
+        Debug.DrawRay(playerCamera.gameObject.transform.position, Vector3.forward * 20, Color.red);
+        if (Physics.Raycast(playerCamera.gameObject.transform.position, Vector3.forward, 20) == true)
         {
-            animator.SetTrigger("isAttacking");
-            StartCoroutine(InitialiseAttack());
+            return;
         }
+        else
+        {
+            newCommand = new InvertAimCommand();
+            Invoker.AddCommand(newCommand);
+        }
+        
     }
 
     IEnumerator InitialiseAttack()
